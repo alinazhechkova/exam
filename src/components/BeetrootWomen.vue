@@ -13,6 +13,7 @@
                 </div>
             </div>
         </section>
+        <beetroot-footer />
     </div>
 </template>
 
@@ -20,10 +21,12 @@
 import BeetrootHeader from "./BeetrootHeader.vue";
 import { mapGetters } from "vuex";
 import BeetrootProduct from "./catalog/BeetrootProduct.vue";
+import BeetrootFooter from "./BeetrootFooter.vue";
 export default {
     components: {
         BeetrootHeader,
         BeetrootProduct,
+        BeetrootFooter,
     },
     name: "beetroot-woman",
     computed: {
@@ -41,6 +44,7 @@ export default {
         background: white;
     }
     &__container {
+        padding: 50px 0;
         @media screen and (max-width: 768px) {
             padding-top: 100px;
         }

@@ -10,7 +10,7 @@
                 </h2>
                 <p class="col-12 col-md-4 subscribe__content">
                     Subscribe our newsletter and don't miss any of our
-                    promotions or sales of Timex watches. Thank you!
+                    promotions or sales of Nike sport shoes. Thank you!
                 </p>
                 <div class="subscribe__form-wrap col-12 col-md-4">
                     <form class="subscribe__form" @submit="submitForm">

@@ -3,8 +3,9 @@
         <div class="container">
             <button @click="openCart" class="openCart">
                 <font-awesome-icon icon="shopping-cart" />
+                <span class="cart__subqty">{{ cartTotalQty }}</span>
             </button>
-            <span class="cart__subqty">{{ cartTotalQty }}</span>
+
             <div class="modal-window cart-window" ref="cart">
                 <div class="modal-window__header cart-window__header">
                     <h3 class="modal-window__title cart-window__title">
@@ -81,12 +82,16 @@ export default {
         openCart() {
             this.showModal = !this.showModal;
             this.$refs.cart.classList.toggle("active");
-            document.body.classList.add("fixed");
+            if (window.screen.width >= 768) {
+                document.body.classList.add("fixed");
+            }
         },
         closeCart() {
             this.showModal = !this.showModal;
             this.$refs.cart.classList.remove("active");
-            document.body.classList.remove("fixed");
+            if (window.screen.width >= 768) {
+                document.body.classList.remove("fixed");
+            }
         },
     },
     created() {
@@ -104,7 +109,7 @@ export default {
         content: "";
         display: inline-block;
         height: 14px;
-        margin-left: 15px;
+        margin-left: 25px;
         width: 2px;
         background-color: lightgray;
     }
@@ -194,6 +199,9 @@ export default {
             visibility: visible;
             overflow-y: auto;
         }
+    }
+    @media screen and (max-width: 768px) {
+        display: inline-block;
     }
 }
 .cart-window {

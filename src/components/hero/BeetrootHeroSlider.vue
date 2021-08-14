@@ -89,14 +89,12 @@ export default {
     left: 10%;
     font-size: 25px;
     @media screen and (max-width: 768px) {
-        top: 17%;
+        top: 10%;
         left: 50%;
         transform: translateX(-50%);
         font-size: 20px;
     }
-    @media screen and (max-width: 576px) {
-        top: 16.5%;
-    }
+    
 }
 .current-slide_hero {
     color: #2121ff;

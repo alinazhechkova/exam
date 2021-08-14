@@ -52,9 +52,7 @@
                                     class="form-check-input"
                                     id="Check1"
                                 />
-                                <label
-                                    class="form-check-label"
-                                    for="Check1"
+                                <label class="form-check-label" for="Check1"
                                     >Check me out</label
                                 >
                             </div>
@@ -74,11 +72,15 @@ export default {
     methods: {
         openAccountForm() {
             this.$refs.formWindow.classList.add("active");
-            document.bode.classList.add("fixed");
+            if (window.screen.width >= 768) {
+                document.body.classList.add("fixed");
+            }
         },
         closeAccountForm() {
             this.$refs.formWindow.classList.remove("active");
-            document.bode.classList.remove("fixed");
+            if (window.screen.width >= 768) {
+                document.body.classList.remove("fixed");
+            }
         },
     },
 };
@@ -101,6 +103,9 @@ export default {
             width: 2px;
             background-color: lightgray;
         }
+    }
+    @media screen and (max-width: 768px) {
+        display: inline-block;
     }
 }
 .form {

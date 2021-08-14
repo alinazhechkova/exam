@@ -80,6 +80,7 @@
             </template>
         </div>
         <div class="slide-count"><span class="current-slide">1</span>5</div>
+
         <VueSlickCarousel
             v-bind="options"
             ref="carousel"
@@ -110,6 +111,7 @@ export default {
     data: () => {
         return {
             sortedProducts: [],
+
             currentBrand: "newBalance",
             options: {
                 slidesToShow: 3,
@@ -131,9 +133,6 @@ export default {
                         },
                     },
 
-                    // You can unslick at a given breakpoint now by adding:
-                    // settings: "unslick"
-                    // instead of a settings object
                 ],
             },
         };
@@ -151,7 +150,6 @@ export default {
         sortByBrand(brand) {
             this.sortedProducts = [];
             let vm = this;
-
             vm.productList.map(function (item) {
                 if (item.brand === brand) {
                     vm.sortedProducts.push(item);
@@ -195,6 +193,11 @@ export default {
         ...mapGetters(["productList"]),
 
         sorted() {
+            if (!this.sortedProducts.length) {
+                return this.productList.filter(
+                    (item) => item.brand === "New Balance"
+                );
+            }
             return [...new Set(this.sortedProducts)];
         },
     },
@@ -204,6 +207,7 @@ export default {
 
     created() {
         this.setProduct();
+        this.sortByBrand("New Balance");
     },
 };
 </script>

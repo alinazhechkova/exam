@@ -13,7 +13,6 @@
             </button>
             <div class="container header__container">
                 <beetroot-cart class="cart" />
-
                 <beetroot-account class="account" />
                 <beetroot-search class="search" />
             </div>

@@ -35,48 +35,26 @@
                     <div class="all__brand">
                         <h3 class="all__price-title">Brand:</h3>
                         <div class="all__filterBrand">
-                            <label class="col-6"
-                                >New Balance:<input
-                                    type="checkbox"
-                                    name="newBalance"
-                                    id="filterBrand"
-                                    @change="filterByBrand"
-                            /></label>
-                            <label class="col-6"
-                                >ASICS:
+                            <div
+                                v-for="option in brands"
+                                :key="option"
+                                class="col-6"
+                            >
                                 <input
+                                    :id="option"
                                     type="checkbox"
-                                    name="asics"
-                                    id="filterBrand"
-                                    @change="filterByBrand"
+                                    :value="option"
+                                    v-model="checked"
                                 />
-                            </label>
-                            <br />
-                            <label class="col-6"
-                                >Nike:
-                                <input
-                                    type="checkbox"
-                                    name="nike"
-                                    id="filterBrand"
-                                    @change="filterByBrand"
-                                />
-                            </label>
-                            <label class="col-6"
-                                >Adidas:
-                                <input
-                                    type="checkbox"
-                                    name="adidas"
-                                    id="filterBrand"
-                                    @change="filterByBrand"
-                                />
-                            </label>
+                                <label :for="option">{{ option }}</label>
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="row all__row">
                     <beetroot-product
-                        v-for="product in sortedProducts"
+                        v-for="product in sortByBrand"
                         :key="product.id"
                         :product="product"
                         class="p-3 col-md-6 col-lg-4 col-12"
@@ -84,6 +62,7 @@
                 </div>
             </div>
         </section>
+        <beetroot-footer />
     </div>
 </template>
 
@@ -91,16 +70,21 @@
 import BeetrootHeader from "./BeetrootHeader.vue";
 import { mapGetters } from "vuex";
 import BeetrootProduct from "./catalog/BeetrootProduct.vue";
+import BeetrootFooter from "./BeetrootFooter.vue";
+
 export default {
     components: {
         BeetrootHeader,
         BeetrootProduct,
+        BeetrootFooter,
     },
     data() {
         return {
             minPrice: 0,
             maxPrice: 200,
             sorted: [],
+            checked: [],
+            brands: ["New Balance", "ASICS", "Nike", "Adidas"],
         };
     },
     name: "beetroot-all",
@@ -114,7 +98,21 @@ export default {
                 );
             });
         },
+        sortByBrand() {
+            if (!this.checked.length) {
+                return this.sortedProducts;
+            }
+            const arr = this.checked.forEach((item) => {
+                this.sortedProducts.map((product) => {
+                    if (product.brand.includes(item)) {
+                        return product;
+                    }
+                });
+            });
+            return arr;
+        },
     },
+
     methods: {
         setRangeSlider() {
             this.sortByPrice;
@@ -127,94 +125,10 @@ export default {
         openFilter() {
             this.$refs.filter.classList.toggle("active");
         },
-        filterByPrice() {},
-        filterByBrand(e) {
-            if (e.target.name === "newBalance") {
-                if (e.target.checked) {
-                    this.sorted.push(
-                        ...this.productList.filter((item) => {
-                            return item.brand === "New Balance";
-                        })
-                    );
-                }
-                if (!e.target.checked) {
-                    this.sorted
-                        .filter((item, index) => {
-                            if (item.brand === "Nike") {
-                                return index;
-                            }
-                        })
-                        .forEach((ind) => {
-                            this.sorted.splice(ind, 1);
-                        });
-                }
-            }
-            if (e.target.name === "asics") {
-                if (e.target.checked) {
-                    this.sorted.push(
-                        ...this.productList.filter((item) => {
-                            return item.brand === e.target.name.toUpperCase();
-                        })
-                    );
-                }
-                if (!e.target.checked) {
-                    this.sorted
-                        .map((item, index) => {
-                            if (item.brand === "Nike") {
-                                return index;
-                            }
-                        })
-                        .forEach((ind) => {
-                            this.sorted.splice(ind, 1);
-                        });
-                }
-            }
-            if (e.target.name === "nike") {
-                if (e.target.checked) {
-                    this.sorted.push(
-                        ...this.productList.filter((item) => {
-                            return item.brand === "Nike";
-                        })
-                    );
-                }
-                if (!e.target.checked) {
-                    this.sorted
-                        .map((item, index) => {
-                            if (item.brand === "Nike") {
-                                return index;
-                            }
-                        })
-                        .forEach((ind) => {
-                            this.sorted.splice(ind, 1);
-                        });
-                }
-            }
-            if (e.target.name === "adidas") {
-                if (e.target.checked) {
-                    this.sorted.push(
-                        ...this.productList.filter((item) => {
-                            return item.brand === "Adidas";
-                        })
-                    );
-                }
-                if (!e.target.checked) {
-                    this.sorted
-                        .map((item, index) => {
-                            if (item.brand === "Nike") {
-                                return index;
-                            }
-                        })
-                        .forEach((ind) => {
-                            this.sorted.splice(ind, 1);
-                        });
-                }
-            }
-
-            console.log(this.sorted);
-        },
-        mounted() {
-            this.filterByPrice();
-        },
+        visible() {},
+    },
+    mounted() {
+        this.filterByPrice();
     },
 };
 </script>
@@ -239,6 +153,8 @@ export default {
         margin-bottom: 30px;
     }
     &__container {
+        padding: 50px 0;
+
         @media screen and (max-width: 768px) {
             padding-top: 100px;
         }

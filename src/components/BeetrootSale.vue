@@ -13,17 +13,21 @@
                 </div>
             </div>
         </section>
+        <beetroot-footer />
     </div>
 </template>
 
 <script>
 import BeetrootHeader from "./BeetrootHeader.vue";
+import BeetrootFooter from "./BeetrootFooter.vue";
 import { mapGetters } from "vuex";
 import BeetrootProduct from "./catalog/BeetrootProduct.vue";
+
 export default {
     components: {
         BeetrootHeader,
         BeetrootProduct,
+        BeetrootFooter,
     },
     name: "beetroot-sale",
     methods: {},
@@ -44,6 +48,9 @@ export default {
 .sale {
     &__header {
         background-color: #fff;
+    }
+    &__container {
+        padding: 50px 0;
     }
 }
 </style>

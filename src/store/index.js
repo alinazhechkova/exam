@@ -11,6 +11,8 @@ export default new Vuex.Store({
     products: [],
     cart: [],
     currencySymbol: "$",
+    minPrice: 0,
+    maxPrice: 200,
   },
   mutations: {
     setProduct(state, products) {
@@ -37,10 +39,18 @@ export default new Vuex.Store({
 
     removeProduct(state, productIndex) {
       state.cart.splice(productIndex, 1)
-    }
+    },
+
   },
   actions: {
-
+    setRangeSlider(state) {
+      this.sortByPrice;
+      if (state.minPrice > state.maxPrice) {
+        let temp = state.maxPrice;
+        state.maxPrice = state.minPrice;
+        state.minPrice = temp;
+      }
+    },
     async emptyCart({
       commit
     }) {
@@ -117,6 +127,14 @@ export default new Vuex.Store({
     },
     cart(state) {
       return state.cart;
+    },
+    sortedProducts(state) {
+      return state.products.filter((item) => {
+        return (
+          item.specialPrice >= state.minPrice &&
+          item.specialPrice <= state.maxPrice
+        );
+      });
     },
     cartTotalQty(state) {
       let sum = 0;

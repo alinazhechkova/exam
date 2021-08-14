@@ -52,11 +52,15 @@ export default {
     methods: {
         openSearchWindow() {
             this.$refs.searchWindow.classList.add("active");
-            document.body.classList.add("fixed");
+            if (window.screen.width >= 768) {
+                document.body.classList.add("fixed");
+            }
         },
         closeSearchWindow() {
             this.$refs.searchWindow.classList.remove("active");
-            document.body.classList.remove("fixed");
+            if (window.screen.width >= 768) {
+                document.body.classList.remove("fixed");
+            }
         },
         searchForProduct(e) {
             this.product = "";
@@ -120,6 +124,9 @@ export default {
         font-size: 20px;
     }
     &__title {
+    }
+    @media screen and (max-width: 768px) {
+        display: inline-block;
     }
 }
 </style>
