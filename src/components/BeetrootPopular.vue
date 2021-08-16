@@ -5,7 +5,7 @@
                 <h2 class="catalog__title">
                     <span class="catalog__subtitle">Popular</span> Shoes
                 </h2>
-                <router-link to="/all" class="explore__btn details">
+                <router-link to="/all" class="explore__btn details shop-all">
                     <span class="details__line explore__span"
                         >Shop all
                     </span></router-link
@@ -83,7 +83,7 @@ export default {
     computed: {
         ...mapGetters(["productList"]),
         sorted() {
-            return this.productList.filter((item) => item.price >= 120);
+            return this.productList.filter((item) => item.rating >= 4.5);
         },
     },
 

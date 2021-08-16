@@ -1,9 +1,9 @@
 <template>
-    <div class="beetroot-all all">
+    <div class="beetroot-all all" id="all">
         <beetroot-header class="all__header" />
         <section class="all__section">
-            <div class="container all__container">
-                <button class="details all__fiterBtn">
+            <div class="container all__container category-container">
+                <!-- <button class="details all__fiterBtn">
                     <span class="details__line" @click="openFilter"
                         >Filter</span
                     >
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-
+-->
                 <div class="row all__row">
                     <beetroot-product
                         v-for="product in sortByBrand"
@@ -62,7 +62,8 @@
                 </div>
             </div>
         </section>
-        <beetroot-footer />
+
+        <beetroot-footer :id="'all'" />
     </div>
 </template>
 
@@ -134,9 +135,16 @@ export default {
 </script>
 
 <style lang="scss">
+.category-container {
+    min-height: calc(100vh - 210px);
+    @media screen and (max-width: 768px) {
+        min-height: calc(100vh - 168px);
+    }
+}
 .all {
     & label {
-        display: block;
+        display: inline-block;
+        padding: 9px;
     }
     &__header {
         background: white;
@@ -147,6 +155,9 @@ export default {
     &__filterBrand {
         display: flex;
         flex-wrap: wrap;
+        & .col-6 {
+            text-align: left;
+        }
     }
     &__filterBtn {
         display: flex;
@@ -161,6 +172,8 @@ export default {
     }
     &__price-title {
         margin-right: 20px;
+        font-size: 22px;
+        font-weight: bold;
     }
     &__price {
         display: flex;
@@ -196,5 +209,8 @@ input[type="range"]::-webkit-slider-thumb {
     position: relative;
     top: 2px;
     margin-top: -7px;
+}
+input[type="range" i] {
+    color: white;
 }
 </style>

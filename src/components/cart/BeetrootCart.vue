@@ -51,7 +51,7 @@
                         v-if="cart.length"
                         @click="emptyCart"
                     >
-                        <span class="brand__btn-span">Buy</span>
+                        <span class="brand__btn-span">Buy</span><em></em>
                     </button>
                 </div>
             </div>
@@ -234,8 +234,11 @@ export default {
     width: 100%;
     &__title,
     &__column {
-        text-align: left;
+        text-align: center;
         padding: 5px 0;
+        &:first-of-type {
+            text-align: left;
+        }
     }
 
     &__column,

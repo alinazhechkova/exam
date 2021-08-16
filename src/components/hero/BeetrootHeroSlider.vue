@@ -1,5 +1,5 @@
 <template>
-    <div class="beetroot-hero-slider">
+    <div class="beetroot-hero-slider" id="hero">
         <div class="container">
             <VueSlickCarousel
                 :slidesToShow="1"
@@ -13,15 +13,22 @@
                     :key="product.id"
                     :product="product"
                     class="p-3"
+                    :openDetails="openDetails"
                 />
             </VueSlickCarousel>
             <div class="slide-count_hero">
                 <span class="current-slide_hero">1</span>4
             </div>
+            <beetroot-details-window
+                class="details__window"
+                :product="productDetails"
+            />
         </div>
+        <a href="#explore" class="scroll-btn"> </a>
     </div>
 </template>
 <script>
+import BeetrootDetailsWindow from "./BeetrootDetailsWindow.vue";
 import { mapActions, mapGetters } from "vuex";
 import VueSlickCarousel from "vue-slick-carousel";
 import "vue-slick-carousel/dist/vue-slick-carousel.css";
@@ -30,19 +37,38 @@ import "vue-slick-carousel/dist/vue-slick-carousel-theme.css";
 
 import BeetrootHeroProduct from "./BeetrootHeroProduct.vue";
 export default {
-    components: { VueSlickCarousel, BeetrootHeroProduct },
+    components: {
+        BeetrootDetailsWindow,
+        VueSlickCarousel,
+        BeetrootHeroProduct,
+    },
+    data() {
+        return {
+            current: 1,
+        };
+    },
     name: "beetroot-hero-slider",
     methods: {
         ...mapActions(["setProduct"]),
         getSliderIndex(currentSlide) {
             const el = document.querySelector(".current-slide_hero");
             el.innerHTML = currentSlide + 1;
+            this.current = el.innerHTML;
+        },
+        openDetails() {
+            const elem = document.querySelector(".details__window");
+            elem.classList.add("active");
+            document.body.classList.add("fixed", "absolute");
         },
     },
     computed: {
         ...mapGetters(["productList"]),
         getMaxPrice() {
             return this.productList.filter((product) => product.price > 150);
+        },
+        productDetails() {
+            const index = this.current - 1;
+            return this.getMaxPrice[index];
         },
     },
     created() {
@@ -56,6 +82,7 @@ export default {
     margin-top: -5%;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
     & .slick-arrow {
         top: 88%;
         background-color: transparent;
@@ -83,18 +110,33 @@ export default {
         height: 100vh;
     }
 }
+.scroll-btn {
+    display: block;
+    background-color: transparent;
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+    position: absolute;
+    top: 88%;
+    transform: rotate(45deg);
+    left: 16%;
+    border-top: none;
+    border-left: none;
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+}
 .slide-count_hero {
     position: absolute;
-    top: 80%;
-    left: 10%;
+    top: 77%;
+    left: 29%;
     font-size: 25px;
     @media screen and (max-width: 768px) {
-        top: 10%;
+        top: 9.5%;
         left: 50%;
         transform: translateX(-50%);
         font-size: 20px;
     }
-    
 }
 .current-slide_hero {
     color: #2121ff;

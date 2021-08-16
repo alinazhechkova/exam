@@ -1,19 +1,19 @@
 <template>
-    <div class="beetroot-sale sale">
+    <div class="beetroot-sale sale" id="sale">
         <beetroot-header class="sale__header" />
         <section class="sale__section">
-            <div class="sale__container container">
+            <div class="sale__container container category-container">
                 <div class="row sale__row">
                     <beetroot-product
                         v-for="product in filtered"
                         :key="product.id"
                         :product="product"
-                        class="p-3 col-4"
+                        class="p-3 col-12 col-md-4"
                     />
                 </div>
             </div>
         </section>
-        <beetroot-footer />
+        <beetroot-footer :id="'sale'" />
     </div>
 </template>
 

@@ -27,11 +27,11 @@ export default {
     &__first {
         text-decoration: line-through;
         color: #a6a6a6;
-        font-weight: light;
+        font-weight: 300;
     }
     &__special {
         color: #1117f3;
-        font-weight: bold;
+        font-weight: 700;
         margin-right: 10px;
     }
 }

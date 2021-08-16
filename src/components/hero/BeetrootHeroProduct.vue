@@ -17,12 +17,16 @@
                     <beetroot-price :product="product" />
                 </div>
                 <div class="beetroot-button hero-product__button">
-                    <button @click="addToCartProduct" class="button_hero">
-                        Add <span class="button__span button__span_add">+</span>
+                    <button
+                        @click="addToCartProduct"
+                        class="button_hero col-12 col-md-8"
+                    >
+                        <span>Add</span><em>+</em>
                     </button>
                     <button
-                        class="hero-product__details details"
+                        class="hero-product__details details col-12 col-md-4"
                         id="seeDetails"
+                        @click="openDetails(event, product.id)"
                     >
                         <span class="details__line">See details</span>
                     </button>
@@ -48,6 +52,12 @@ export default {
     },
 
     methods: {
+        openDetails(e, id) {
+            console.log(e, id);
+            const elem = document.querySelector(".details__window");
+            elem.classList.add("active");
+            document.body.classList.add("fixed", "absolute");
+        },
         addToCartProduct() {
             const product = this.product;
             this.addToCart({
@@ -65,6 +75,30 @@ export default {
 };
 </script>
 <style lang="scss">
+body.absolute {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.75);
+}
+.details {
+    &__window {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.75);
+
+        display: none;
+
+        &.active {
+            display: block;
+        }
+    }
+}
 .hero-product {
     height: 500px;
     display: flex;
@@ -84,12 +118,15 @@ export default {
     }
     &__button {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
         @media screen and (max-width: 990px) {
             align-self: normal;
         }
         @media screen and (max-width: 768px) {
             align-items: center;
+            flex-direction: column;
         }
     }
     &__content {
@@ -97,8 +134,10 @@ export default {
         flex-direction: column;
         justify-content: center;
         margin-top: -250px;
+        max-width: 350px;
+        width: 100%;
         @media screen and (max-width: 990px) {
-            margin-top: -25%;
+            margin: -25% auto 0;
             align-items: center;
         }
         @media screen and (max-width: 768px) {
@@ -106,7 +145,6 @@ export default {
         }
     }
     &__details {
-        margin-left: 100px;
         @media screen and (max-width: 990px) {
             display: none;
         }
@@ -118,6 +156,7 @@ export default {
         display: block;
         text-align: left;
         line-height: 1.2em;
+        z-index: 1000;
         @media screen and (max-width: 1200px) {
             font-size: 50px;
         }
@@ -127,7 +166,7 @@ export default {
         }
     }
     &__price {
-        font-size: 50px;
+        font-size: 50px !important;
         margin-top: 10px;
         margin-bottom: 20px;
         @media screen and (max-width: 1200px) {
@@ -152,6 +191,9 @@ export default {
         flex-direction: column;
         margin-top: -7%;
     }
+    @media screen and (max-width: 768px) {
+        margin-top: -18%;
+    }
 }
 .price {
     @media screen and (max-width: 990px) {
@@ -167,6 +209,7 @@ export default {
         right: 14px;
     }
 }
+
 .button_hero {
     max-width: 165px;
     width: 100%;
@@ -179,11 +222,78 @@ export default {
     border: 2px solid black;
     background-color: transparent;
     text-transform: uppercase;
+    cursor: pointer;
+    span {
+        color: #1117f3;
+
+        display: block;
+        text-transform: uppercase;
+        transform-origin: center left;
+        transition: color 0.3s ease;
+        position: relative;
+        z-index: 1;
+    }
+    em {
+        position: absolute;
+        display: block;
+        color: #1117f3;
+        font-size: 18px;
+        position: absolute;
+        right: 14px;
+        transform: scale(1);
+
+        transform-origin: center right;
+        transition: all 0.3s ease;
+        z-index: 1;
+        font-style: normal;
+    }
+    &:before,
+    &:after {
+        content: "";
+        background: #1117f3;
+        height: 50%;
+        width: 0;
+        position: absolute;
+        transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    }
+    &:before {
+        top: 0;
+        left: 0;
+        right: auto;
+    }
+    &:after {
+        bottom: 0;
+        right: 0;
+        left: auto;
+    }
+    &:hover {
+        &:before {
+            width: 100%;
+            right: 0;
+            left: auto;
+        }
+        &:after {
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+        span {
+            color: #fff;
+        }
+        em {
+            color: #fff;
+            transform: scale(1.2);
+        }
+    }
+}
+.button_hero {
     @media screen and (max-width: 1200px) {
         max-width: 120px;
     }
     @media screen and (max-width: 768px) {
         max-width: 100px;
+        margin: 10px 0;
+        padding: 5px 10px;
     }
     @media screen and (max-width: 576px) {
         max-width: 120px;
@@ -207,9 +317,10 @@ export default {
             width: 100%;
             background-color: #000;
         }
-        @media screen and (max-width: 768px) {
-            font-size: 12px;
-        }
+    }
+    @media screen and (max-width: 768px) {
+        max-width: 100px;
+        width: 100%;
     }
     @media screen and (max-width: 576px) {
         display: none;
@@ -231,7 +342,6 @@ export default {
         @media screen and (max-width: 1200px) {
             height: 350px;
             width: 350px;
-            margin: -80px -115px;
         }
         @media screen and (max-width: 990px) {
             height: 300px;

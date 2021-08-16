@@ -1,5 +1,5 @@
 <template>
-    <section class="beetroot-explore">
+    <section class="beetroot-explore" id="explore">
         <div class="explore__container container">
             <div class="explore__content">
                 <h2 class="catalog__title explore__title">
@@ -8,7 +8,7 @@
                     >
                     Shoes
                 </h2>
-                <router-link to="/all" class="explore__btn details"
+                <router-link to="/all" class="explore__btn details shop-all"
                     ><span class="details__line explore__span"
                         >Shop all</span
                     ></router-link
@@ -22,9 +22,10 @@
                         class="explore-item__img"
                     />
                     <h3 class="explore-item__title">For men</h3>
+
                     <router-link to="/men" class="brand__btn explore-item__btn"
-                        >Men</router-link
-                    >
+                        ><span>Men</span><em></em
+                    ></router-link>
                 </div>
                 <div class="col-md-4 col-12 explore__item explore-item">
                     <img
@@ -36,8 +37,8 @@
                     <router-link
                         to="/women"
                         class="brand__btn explore-item__btn"
-                        >Women</router-link
-                    >
+                        ><span>Women</span><em></em
+                    ></router-link>
                 </div>
                 <div class="col-md-4 col-12 explore__item explore-item">
                     <img
@@ -47,8 +48,8 @@
                     />
                     <h3 class="explore-item__title">Watches on sale</h3>
                     <router-link to="/sale" class="brand__btn explore-item__btn"
-                        >Sale</router-link
-                    >
+                        ><span>Sale</span><em></em
+                    ></router-link>
                 </div>
             </div>
         </div>
@@ -60,6 +61,8 @@ export default {
 };
 </script>
 <style lang="scss">
+.brand__btn {
+}
 .explore {
     &__item {
     }
@@ -75,10 +78,15 @@ export default {
     &__btn {
         align-self: center;
         text-decoration: none;
+        max-width: 217px;
+        width: 100%;
     }
     &__container {
         padding: 80px 0;
     }
+}
+.shop-all {
+    max-width: 82px;
 }
 .explore-item {
     &__title {

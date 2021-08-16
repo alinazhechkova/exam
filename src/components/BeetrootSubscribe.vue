@@ -10,7 +10,7 @@
                 </h2>
                 <p class="col-12 col-md-4 subscribe__content">
                     Subscribe our newsletter and don't miss any of our
-                    promotions or sales of Nike sport shoes. Thank you!
+                    promotions or sales of SportLife sport shoes. Thank you!
                 </p>
                 <div class="subscribe__form-wrap col-12 col-md-4">
                     <form class="subscribe__form" @submit="submitForm">
@@ -35,6 +35,20 @@ export default {
     methods: {
         submitForm(e) {
             e.preventDefault();
+            const elem = document.querySelector(".subscribe__input");
+            /* if (!elem.value) {
+                alert("Enter email");
+                return;
+            }
+            if (
+                !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+                    elem.value
+                )
+            ) {
+                alert("Enter email");
+                return;
+            }*/
+            elem.value = "";
         },
     },
 };
@@ -73,6 +87,9 @@ export default {
     &__content {
         color: #aeaeae;
         font-size: 14px;
+        @media screen and (max-width: 768px) {
+            text-align: left;
+        }
     }
 
     // .subscribe__form
@@ -94,6 +111,9 @@ export default {
         width: 75%;
         padding: 10px 17px;
         box-sizing: border-box;
+        color: #fff;
+        font-size: 14px;
+        font-weight: bold;
         &::-webkit-input-placeholder {
             color: #fff;
             font-size: 12px;

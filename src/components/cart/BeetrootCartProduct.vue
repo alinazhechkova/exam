@@ -12,6 +12,7 @@
                 </div>
                 <div class="cart__info">
                     <p class="cart__name">{{ item.name }}</p>
+                    <beetroot-rating :rating="4.5" />
                 </div>
             </div>
         </td>
@@ -38,16 +39,15 @@
 import { mapGetters, mapActions } from "vuex";
 import BeetrootImage from "../catalog/BeetrootImage.vue";
 import BeetrootButtonAction from "./BeetrootButtonAction.vue";
+import BeetrootRating from "../catalog/BeetrootRating.vue";
+
 export default {
     name: "beetroot-cart-product",
     props: {
         item: Object,
         index: Number,
     },
-    components: {
-        BeetrootButtonAction,
-        BeetrootImage,
-    },
+    components: { BeetrootRating, BeetrootButtonAction, BeetrootImage },
     methods: {
         ...mapActions(["removeProduct"]),
         removeProductCart() {

@@ -11,13 +11,14 @@ import {
 import {
   faSearch,
   faUser,
-  faShoppingCart
+  faShoppingCart,
+  faStar
 } from '@fortawesome/free-solid-svg-icons'
 import {
   FontAwesomeIcon
 } from '@fortawesome/vue-fontawesome'
 
-library.add(faSearch, faUser, faShoppingCart)
+library.add(faSearch, faUser, faShoppingCart, faStar)
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

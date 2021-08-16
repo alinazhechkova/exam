@@ -17,47 +17,42 @@
             </div>
             <div class="form__main mt-4">
                 <div class="row">
-                    <div class="col-sm-6 mx-auto">
-                        <form class="form-register">
+                    <div class="col-md-6 col-12 mx-auto">
+                        <form class="register" @submit="submitForm">
                             <div class="mb-3">
-                                <label
-                                    for="exampleInputEmail1"
-                                    class="form-label"
-                                    >Email address</label
-                                >
-                                <input
-                                    type="email"
-                                    class="form-control"
-                                    id="exampleInputEmail1"
-                                    aria-describedby="emailHelp"
-                                />
-                                <div id="emailHelp" class="form-text">
-                                    We'll never share your email with anyone
-                                    else.
-                                </div>
+                                <label class="register__label"
+                                    >Email address
+                                    <input
+                                        type="email"
+                                        class="register__email register__input"
+                                /></label>
                             </div>
                             <div class="mb-3">
-                                <label for="InputPassword1" class="form-label"
-                                    >Password</label
-                                >
-                                <input
-                                    type="password"
-                                    class="form-control"
-                                    id="InputPassword1"
-                                />
+                                <label class="register__label"
+                                    >Password
+                                    <input
+                                        type="password"
+                                        class="
+                                            register__password register__input
+                                        "
+                                    />
+                                </label>
                             </div>
                             <div class="mb-3 form-check">
                                 <input
                                     type="checkbox"
-                                    class="form-check-input"
+                                    class="form-check__input"
                                     id="Check1"
                                 />
-                                <label class="form-check-label" for="Check1"
-                                    >Check me out</label
-                                >
+                                <label class="form-check__label" for="Check1">
+                                    <span class="form-check__span"
+                                        >Check me out
+                                    </span>
+                                </label>
                             </div>
-                            <button type="button" class="brand__btn">
+                            <button type="submit" class="brand__btn">
                                 <span class="brand__btn-span"> Log me in </span>
+                                <em></em>
                             </button>
                         </form>
                     </div>
@@ -82,10 +77,76 @@ export default {
                 document.body.classList.remove("fixed");
             }
         },
+        submitForm(e) {
+            e.preventDefault();
+            const emailInput = document.querySelector(".register__email");
+            const passwordInput = document.querySelector(".register__password");
+            emailInput.value = "";
+            passwordInput.value = "";
+        },
     },
 };
 </script>
 <style lang="scss">
+.register {
+    &__label {
+        display: block;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-align: left;
+    }
+    &__input {
+        display: block;
+        border: none;
+        border-bottom: 2px solid black;
+        padding: 10px;
+        width: 500px;
+    }
+}
+.form-check {
+    text-align: left;
+    padding: 0 !important;
+    &__span {
+        margin-left: 25px;
+    }
+    &__input {
+        height: 0px;
+        width: 0px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        &:checked {
+            & + .form-check__label::before {
+                background-color: #2121ff;
+            }
+        }
+    }
+    &__label {
+        position: relative;
+        &::before {
+            content: "";
+            display: block;
+            height: 20px;
+            width: 20px;
+            border: 1px solid black;
+            border-radius: 2px;
+            position: absolute;
+            top: 0;
+        }
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            top: -1px;
+            border: 3px solid white;
+            width: 9px;
+            height: 14px;
+            left: 6px;
+            transform: rotate(45deg);
+            border-top: none;
+            border-left: none;
+        }
+    }
+}
 .account {
     &__link {
         text-decoration: none;

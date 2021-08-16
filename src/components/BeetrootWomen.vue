@@ -1,8 +1,8 @@
 <template>
-    <div class="beetroot-woman woman">
+    <div class="beetroot-woman woman" id="woman">
         <beetroot-header class="woman__header" />
         <section class="woman__section">
-            <div class="container woman__container">
+            <div class="container woman__container category-container">
                 <div class="row woman__row">
                     <beetroot-product
                         v-for="product in filtered"
@@ -13,7 +13,7 @@
                 </div>
             </div>
         </section>
-        <beetroot-footer />
+        <beetroot-footer :id="'woman'" />
     </div>
 </template>
 

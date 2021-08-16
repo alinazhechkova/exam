@@ -17,6 +17,7 @@ let PRODUCTS = [{
         specialPrice: '159.00',
         gender: 'Men',
         discount: '-20%',
+        rating: 3.5,
         labels: {
             new: "New",
         },
@@ -30,6 +31,7 @@ let PRODUCTS = [{
         brand: 'New Balance',
         price: '170.00',
         specialPrice: '159.00',
+        rating: 3.9,
         gender: 'Men',
         discount: '-20%',
         labels: {
@@ -43,6 +45,7 @@ let PRODUCTS = [{
         name: 'New Balance',
         fullName: "New Balance U410CB 42 (9.5) 27.5 см",
         brand: 'New Balance',
+        rating: 4.5,
         price: '170.00',
         specialPrice: '159.00',
         gender: 'Men',
@@ -59,6 +62,7 @@ let PRODUCTS = [{
         specialPrice: '129.00',
         gender: 'Men',
         labels: {},
+        rating: 3.2,
         img: "4.png",
         sku: "TW2R27100VQ",
     },
@@ -70,6 +74,7 @@ let PRODUCTS = [{
         price: '129.00',
         specialPrice: '129.00',
         gender: 'Women',
+        rating: 4.9,
         labels: {},
         img: "5.png",
         sku: "TW2R27100VQ",
@@ -81,6 +86,7 @@ let PRODUCTS = [{
         brand: 'ASICS',
         price: '70.00',
         specialPrice: '70.00',
+        rating: 3.7,
         gender: 'Men',
         labels: {
             new: "New",
@@ -97,6 +103,7 @@ let PRODUCTS = [{
         price: '60.00',
         specialPrice: '60.00',
         gender: 'Men',
+        rating: 4.7,
         labels: {},
         img: "10.png",
         sku: "TW2R27100VQ",
@@ -110,6 +117,8 @@ let PRODUCTS = [{
         specialPrice: '159.00',
         gender: 'Women',
         labels: {},
+        rating: 3.9,
+
         characteristics: ['Timex Smart', 'Fast Accurate GPS', 'Accurate On-Wrist Heart Rate', 'Guided Coaching Activity Tracking', 'Easy-to-Use Menus ', 'Soft Silicone Rubber Strap', 'Customizable Vibrating Alarm', 'TapScreen™ Technology', 'Water Resistant to 50 Meters'],
         img: "11.png",
         sku: "TIMEX-IRONMAN-R300-GPS-Watch",
@@ -122,6 +131,8 @@ let PRODUCTS = [{
         price: '65.00',
         specialPrice: '60.00',
         gender: 'Men',
+        rating: 4,
+
         labels: {
             discount: '-10%'
         },
@@ -136,6 +147,8 @@ let PRODUCTS = [{
         price: '74.00',
         specialPrice: '70.00',
         gender: 'Women',
+        rating: 3.0,
+
         discount: '-10%',
         labels: {
             new: "New",
@@ -151,6 +164,8 @@ let PRODUCTS = [{
         price: '109.00',
         specialPrice: '120.00',
         gender: 'Men',
+        rating: 4.8,
+
         discount: '-10%',
         labels: {
             new: "New",
@@ -166,6 +181,8 @@ let PRODUCTS = [{
         price: '74.00',
         specialPrice: '70.00',
         gender: 'Men',
+        rating: 3.6,
+
         discount: '-10%',
         labels: {},
         img: "15.png",
@@ -180,6 +197,8 @@ let PRODUCTS = [{
         specialPrice: '110.00',
         gender: 'Women',
         discount: '-10%',
+        rating: 5,
+
         labels: {},
         img: "16.png",
         sku: "TW2R27100VQ",
@@ -194,6 +213,8 @@ let PRODUCTS = [{
         gender: 'Men',
         discount: '-10%',
         labels: {},
+        rating: 5,
+
         img: "12.png",
         sku: "TW5M14500JT",
     },
@@ -206,6 +227,8 @@ let PRODUCTS = [{
         specialPrice: '70.00',
         gender: 'Men',
         discount: '-10%',
+        rating: 3.5,
+
         labels: {
             new: "New",
         },
@@ -220,6 +243,8 @@ let PRODUCTS = [{
         price: '79.00',
         specialPrice: '79.00',
         gender: 'Men',
+        rating: 4,
+
         labels: {
             new: "New",
         },
@@ -235,6 +260,7 @@ let PRODUCTS = [{
         specialPrice: '80.00',
         gender: 'Women',
         discount: '-10%',
+        rating: 3.8,
         labels: {},
         img: "20.png",
         sku: "TW5M37900IQ",
@@ -245,6 +271,8 @@ let PRODUCTS = [{
         fullName: "Adidas Response Sr FY9153 40.5 (8UK) 26.5 см",
         brand: 'Adidas',
         price: '79.00',
+        rating: 3.2,
+
         specialPrice: '79.00',
         gender: 'Women',
         labels: {},
@@ -259,6 +287,7 @@ let PRODUCTS = [{
         price: '100.00',
         specialPrice: '90.00',
         gender: 'Men',
+        rating: 3.6,
         discount: '-20%',
         labels: {},
         img: "22.png",
@@ -273,6 +302,8 @@ let PRODUCTS = [{
         gender: 'Men',
         discount: '-20%',
         labels: {},
+        rating: 3.1,
+
         img: "19.png",
         sku: "TW2R27100VQ",
     },

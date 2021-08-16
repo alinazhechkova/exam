@@ -9,7 +9,7 @@
             <beetroot-popular />
             <beetroot-subscribe />
         </main>
-        <beetroot-footer />
+        <beetroot-footer :id="'hero'" />
     </div>
 </template>
 

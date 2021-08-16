@@ -1,32 +1,6 @@
 <template>
     <div id="app">
-        <div id="nav">
-            <router-link to="/" class="logo">
-                <svg
-                    viewBox="-100 -114 400 300"
-                    enable-background="new -100 -114 400 300"
-                    xml:space="preserve"
-                >
-                    <path
-                        d="M-5.801,84.342c-8.089-0.32-14.709-2.535-19.884-6.646c-0.987-0.785-3.341-3.14-4.13-4.134
-	c-2.099-2.638-3.525-5.207-4.478-8.056c-2.929-8.771-1.42-20.281,4.31-32.914c4.908-10.814,12.481-21.539,25.694-36.394
-	c1.945-2.186,7.742-8.579,7.778-8.579c0.015,0-0.3,0.548-0.698,1.215C-0.645-5.413-3.584,1.366-5.186,7.232
-	c-2.572,9.417-2.262,17.495,0.909,23.761c2.187,4.316,5.937,8.055,10.153,10.122c7.382,3.617,18.189,3.916,31.388,0.875
-	c0.909-0.21,45.936-12.163,100.062-26.563c54.124-14.4,98.417-26.174,98.424-26.163c0.015,0.012-125.749,53.829-191.035,81.747
-	c-10.34,4.42-13.105,5.536-17.964,7.243C14.325,82.617,3.195,84.699-5.801,84.342z"
-                    />
-                </svg>
-            </router-link>
-            <button class="open-brand" @click="openCategories">
-                <span class="open-brand__span"></span>
-            </button>
-            <nav class="categories">
-                <router-link to="/all">All</router-link>
-                <router-link to="/men">Men</router-link>
-                <router-link to="/women">Women</router-link>
-                <router-link to="/sale">Sale</router-link>
-            </nav>
-        </div>
+        <div id="nav"></div>
         <router-view />
     </div>
 </template>
@@ -41,8 +15,17 @@ export default {
 };
 </script>
 <style lang="scss">
+@import url("https://fonts.googleapis.com/css2?family=Hind:wght@300;500;600;700&family=Roboto:wght@300;400;500;700;900&display=swap");
+html,
+body,
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
+    font-family: "Hind", sans-serif;
+}
+button,
+a {
+    font-family: "Roboto", sans-serif;
+}
+#app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -51,38 +34,74 @@ export default {
 }
 .categories {
     display: flex;
-    flex-direction: column;
-    @media screen and (max-width: 576px) {
-        visibility: hidden;
-        pointer-events: none;
-        &.active {
-            visibility: visible;
-            pointer-events: all;
-        }
+    flex-direction: row;
+
+    justify-content: space-around;
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
     }
 }
 .logo {
     & > svg {
-        height: 80px;
+        height: 40px;
     }
 }
 #nav {
-    padding: 30px;
     z-index: 100;
-    height: 0;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
     text-align: left;
     a {
         font-weight: bold;
         color: #2c3e50;
         text-decoration: none;
         margin-bottom: 10px;
-
-        &.logo {
-            font-size: 30px;
-            margin-bottom: 30px;
+        @media screen and (max-width: 768px) {
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid white;
+            background: rgba(248, 248, 255, 0.501);
+            padding: 10px;
+        }
+    }
+}
+.logo {
+    font-size: 30px;
+    margin-top: -10px;
+    margin-bottom: -26px;
+    @media screen and (max-width: 768px) {
+        margin-top: -26px;
+    }
+}
+.open-link {
+    display: block;
+    background: transparent;
+    display: block;
+    width: 30px;
+    height: 10px;
+    border: none;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    &__span {
+        display: block;
+        height: 5px;
+        width: 5px;
+        border-radius: 50%;
+        background: black;
+        position: relative;
+        &::after,
+        &::before {
+            content: "";
+            display: block;
+            height: 5px;
+            width: 5px;
+            border-radius: 50%;
+            background: black;
+            position: absolute;
+        }
+        &::after {
+            left: 10px;
+        }
+        &::before {
+            right: 10px;
         }
     }
 }

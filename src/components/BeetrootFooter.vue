@@ -1,24 +1,19 @@
 <template>
     <footer class="beetrot-footer footer">
         <div class="container footer__container">
+            <a :href="href" class="scroll-btn-footer"> </a>
             <div class="footer__row row">
-                <router-link to="/" class="logo col-3 footer__logo logo">
-                    <svg
-                        viewBox="-100 -114 400 300"
-                        enable-background="new -100 -114 400 300"
-                        xml:space="preserve"
-                    >
+                <router-link
+                    to="/"
+                    class="logo col-12 col-md-3 footer__logo logo"
+                >
+                    <svg aria-hidden="true" viewBox="0 0 512 512">
                         <path
-                            d="M-5.801,84.342c-8.089-0.32-14.709-2.535-19.884-6.646c-0.987-0.785-3.341-3.14-4.13-4.134
-	c-2.099-2.638-3.525-5.207-4.478-8.056c-2.929-8.771-1.42-20.281,4.31-32.914c4.908-10.814,12.481-21.539,25.694-36.394
-	c1.945-2.186,7.742-8.579,7.778-8.579c0.015,0-0.3,0.548-0.698,1.215C-0.645-5.413-3.584,1.366-5.186,7.232
-	c-2.572,9.417-2.262,17.495,0.909,23.761c2.187,4.316,5.937,8.055,10.153,10.122c7.382,3.617,18.189,3.916,31.388,0.875
-	c0.909-0.21,45.936-12.163,100.062-26.563c54.124-14.4,98.417-26.174,98.424-26.163c0.015,0.012-125.749,53.829-191.035,81.747
-	c-10.34,4.42-13.105,5.536-17.964,7.243C14.325,82.617,3.195,84.699-5.801,84.342z"
-                        />
+                            d="M403.5 455.41A246.17 246.17 0 0 1 256 504C118.81 504 8 393 8 256 8 118.81 119 8 256 8a247.39 247.39 0 0 1 165.7 63.5 3.57 3.57 0 0 1-2.86 6.18A418.62 418.62 0 0 0 362.13 74c-129.36 0-222.4 53.47-222.4 155.35 0 109 92.13 145.88 176.83 178.73 33.64 13 65.4 25.36 87 41.59a3.58 3.58 0 0 1 0 5.72zM503 233.09a3.64 3.64 0 0 0-1.27-2.44c-51.76-43-93.62-60.48-144.48-60.48-84.13 0-80.25 52.17-80.25 53.63 0 42.6 52.06 62 112.34 84.49 31.07 11.59 63.19 23.57 92.68 39.93a3.57 3.57 0 0 0 5-1.82A249 249 0 0 0 503 233.09z"
+                        ></path>
                     </svg>
                 </router-link>
-                <div class="col-6">
+                <div class="col-9 col-md-6">
                     <ul class="footer__list list">
                         <li class="list__item">
                             <a href="#" class="list__link">Privacy/Security</a>
@@ -31,8 +26,8 @@
                         </li>
                     </ul>
                 </div>
-                <p class="col-3 footer__copyright">
-                    &copy; 2021 Nike.com, Inc. All Rights Reserved.
+                <p class="col-3 col-md-3 footer__copyright">
+                    &copy; 2021 SportLife.com, Inc. All Rights Reserved.
                 </p>
             </div>
         </div>
@@ -40,10 +35,29 @@
 </template>
 <script>
 export default {
+    props: {
+        id: String,
+    },
     name: "beetroot-footer",
+    computed: {
+        href() {
+            return `#${this.id}`;
+        },
+    },
 };
 </script>
 <style lang="scss">
+.scroll-btn-footer {
+    display: block;
+    background-color: transparent;
+    height: 40px;
+    width: 40px;
+    border: 1px solid white;
+    margin-bottom: 30px;
+    transform: rotate(45deg);
+    border-right: none;
+    border-bottom: none;
+}
 .footer {
     // .footer__container
     background-color: #222222;
@@ -70,6 +84,9 @@ export default {
         & > svg {
             fill: white;
             margin-top: -18px;
+        }
+        @media screen and (max-width: 768px) {
+            margin: 0;
         }
     }
 

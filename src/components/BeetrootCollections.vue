@@ -10,7 +10,7 @@
                         <strong>interchangeable</strong> straps.
                     </p>
                     <button class="collections__btn brand__btn">
-                        <span class="brand__btn-span">More</span>
+                        <span class="brand__btn-span">More<em></em></span>
                     </button>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                         Discover our <strong>new capsule</strong> collection
                     </p>
                     <button class="collections__btn brand__btn">
-                        <span class="brand__btn-span">More</span>
+                        <span class="brand__btn-span">More <em></em></span>
                     </button>
                 </div>
             </div>

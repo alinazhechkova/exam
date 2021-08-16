@@ -34,7 +34,9 @@
                         New Balance Athletics runs on its everyman (and
                         everywoman) appeal
                     </p>
-                    <button class="brand__btn">Browse</button>
+                    <button class="brand__btn">
+                        <span>Browse</span><em></em>
+                    </button>
                 </div>
             </template>
             <template v-if="currentBrand === 'ASICS'">
@@ -47,7 +49,9 @@
                     <p class="brand__intro">
                         Designed to deliver improved cushioning.
                     </p>
-                    <button class="brand__btn">Browse</button>
+                    <button class="brand__btn">
+                        <span>Browse</span><em></em>
+                    </button>
                 </div>
             </template>
             <template v-if="currentBrand === 'Nike'">
@@ -61,7 +65,9 @@
                         Nike delivers innovative products, experiences and
                         services to inspire athletes.
                     </p>
-                    <button class="brand__btn">Browse</button>
+                    <button class="brand__btn">
+                        <span>Browse</span><em></em>
+                    </button>
                 </div>
             </template>
             <template v-if="currentBrand === 'Adidas'">
@@ -75,7 +81,9 @@
                         Adidas designs, develops, produces, and markets athletic
                         and leisure sports equipment.
                     </p>
-                    <button class="brand__btn">Browse</button>
+                    <button class="brand__btn">
+                        <span>Browse</span><em></em>
+                    </button>
                 </div>
             </template>
         </div>
@@ -132,7 +140,6 @@ export default {
                             slidesToScroll: 1,
                         },
                     },
-
                 ],
             },
         };
@@ -216,7 +223,7 @@ export default {
     padding: 50px 0;
 }
 .slick-arrow {
-    background-color: #fff;
+    background-color: transparent;
     height: 40px;
     width: 40px;
     border: 1px solid black;
@@ -350,26 +357,77 @@ export default {
         align-self: center;
         display: block;
         border: 2px solid black;
-        color: #2121ff;
+        position: relative;
         background-color: transparent;
         width: 180px;
-        padding: 10px;
         font-weight: bold;
-        text-transform: uppercase;
         text-align: left;
-        position: relative;
-        &::after {
-            content: "";
+        z-index: 0;
+        span {
+            color: #2121ff;
             display: block;
+            padding: 10px;
+
+            text-transform: uppercase;
+            transform-origin: center left;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+        em {
             position: absolute;
+            background-color: #2121ff;
             height: 5px;
             width: 20px;
-            background-color: #2121ff;
+
             right: 10px;
             top: 50%;
-            transform: translateY(-50%);
+            transform: scaleX(1);
+            transform-origin: center right;
+            transition: all 0.3s ease;
+            z-index: 1;
+        }
+        &:before,
+        &:after {
+            content: "";
+            background: #2121ff;
+            height: 50%;
+            width: 0;
+            position: absolute;
+            transition: 0.3s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+        }
+        &:before {
+            top: 0;
+            left: 0;
+            right: auto;
+        }
+
+        &:after {
+            bottom: 0;
+            right: 0;
+            left: auto;
+        }
+        &:hover {
+            &:before {
+                width: 100%;
+                right: 0;
+                left: auto;
+            }
+            &:after {
+                width: 100%;
+                left: 0;
+                right: auto;
+            }
+            span {
+                color: #fff;
+            }
+            em {
+                background: #fff;
+                transform: scaleX(2);
+            }
         }
     }
+
     @media screen and (max-width: 768px) {
         font-size: 14px;
         padding: 10px 0;
