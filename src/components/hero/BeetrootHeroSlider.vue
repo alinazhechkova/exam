@@ -79,28 +79,36 @@ export default {
 <style lang="scss">
 .beetroot-hero-slider {
     display: flex;
-    margin-top: -5%;
+    position: relative;
+    margin-top: 0%;
     align-items: center;
-    height: 100vh;
-    overflow: hidden;
+    height: calc(100vh - 96px);
     & .slick-arrow {
         top: 88%;
         background-color: transparent;
         z-index: 10000;
 
         @media screen and (max-width: 768px) {
-            display: none !important;
+            top: 50%;
+            transform: translateY(-50%) rotate(45deg);
         }
     }
     .slick-prev {
         left: 95%;
         right: 0;
-        @media screen and (max-width: 576px) {
-            left: 80%;
+        @media screen and (max-width: 768px) {
+            left: 10px;
+        }
+    }
+    .slick-next {
+        @media screen and (max-width: 768px) {
+            right: 10px;
         }
     }
     @media screen and (max-width: 768px) {
         margin-top: 0;
+
+        height: calc(100vh - 53px);
     }
 }
 .beetroot-hero-slider .slick-list {
@@ -125,16 +133,25 @@ export default {
     @media screen and (max-width: 768px) {
         display: none;
     }
+    @media screen and (max-width: 990px) {
+        top: 80%;
+        height: 30px;
+        width: 30px;
+    }
 }
 .slide-count_hero {
     position: absolute;
     top: 77%;
     left: 29%;
     font-size: 25px;
-    @media screen and (max-width: 768px) {
-        top: 9.5%;
+    @media screen and (max-width: 990px) {
+        position: absolute;
+        top: 90%;
         left: 50%;
         transform: translateX(-50%);
+        font-size: 25px;
+    }
+    @media screen and (max-width: 768px) {
         font-size: 20px;
     }
 }

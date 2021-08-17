@@ -52,13 +52,13 @@ export default {
     methods: {
         openSearchWindow() {
             this.$refs.searchWindow.classList.add("active");
-            if (window.screen.width >= 768) {
+            if (window.innerWidth >= 768) {
                 document.body.classList.add("fixed");
             }
         },
         closeSearchWindow() {
             this.$refs.searchWindow.classList.remove("active");
-            if (window.screen.width >= 768) {
+            if (window.innerWidth >= 768) {
                 document.body.classList.remove("fixed");
             }
         },
@@ -119,8 +119,8 @@ export default {
     &__input {
         width: 100%;
         border: none;
-        border-bottom: 1px solid lightgray;
-        padding: 15px 100px 15px 30px;
+        border-bottom: 2px solid black;
+        padding: 15px 100px 15px 0;
         font-size: 20px;
     }
     &__title {

@@ -28,7 +28,8 @@
                         id="seeDetails"
                         @click="openDetails(event, product.id)"
                     >
-                        <span class="details__line">See details</span>
+                        <span class="details__line">See details</span
+                        ><span class="details__dots"></span>
                     </button>
                 </div>
             </div>
@@ -126,7 +127,7 @@ body.absolute {
         }
         @media screen and (max-width: 768px) {
             align-items: center;
-            flex-direction: column;
+            justify-content: center;
         }
     }
     &__content {
@@ -142,6 +143,8 @@ body.absolute {
         }
         @media screen and (max-width: 768px) {
             margin-left: 60px;
+        }
+        @media screen and (max-width: 576px) {
         }
     }
     &__details {
@@ -188,16 +191,20 @@ body.absolute {
         }
     }
     @media screen and (max-width: 990px) {
+        margin-top: -43px;
         flex-direction: column;
-        margin-top: -7%;
     }
     @media screen and (max-width: 768px) {
-        margin-top: -18%;
     }
 }
 .price {
+    &__first {
+        @media screen and (max-width: 990px) {
+            display: none;
+        }
+    }
     @media screen and (max-width: 990px) {
-        display: none;
+        font-size: 30px;
     }
 }
 .button {
@@ -317,6 +324,37 @@ body.absolute {
             width: 100%;
             background-color: #000;
         }
+        @media screen and (max-width: 768px) {
+            display: none;
+        }
+    }
+    &__dots {
+        display: none;
+        height: 5px;
+        width: 5px;
+        border-radius: 50%;
+        background: black;
+        margin: 0 auto;
+        position: relative;
+        &::after,
+        &::before {
+            display: block;
+            content: "";
+            height: 5px;
+            width: 5px;
+            border-radius: 50%;
+            background: black;
+            position: absolute;
+        }
+        &::after {
+            right: 8px;
+        }
+        &::before {
+            left: 8px;
+        }
+        @media screen and (max-width: 768px) {
+            display: block;
+        }
     }
     @media screen and (max-width: 768px) {
         max-width: 100px;
@@ -346,12 +384,14 @@ body.absolute {
         @media screen and (max-width: 990px) {
             height: 300px;
             width: 300px;
-            margin: -46px 45px;
+            margin: -30px 45px;
         }
         @media screen and (max-width: 768px) {
             height: 250px;
             width: 250px;
             margin: 12px 69px;
+        }
+        @media screen and (max-width: 576px) {
         }
     }
     @media screen and (max-width: 990px) {
@@ -360,6 +400,8 @@ body.absolute {
     }
     @media screen and (max-width: 768px) {
         height: 250px;
+    }
+    @media screen and (max-width: 576px) {
     }
 }
 </style>

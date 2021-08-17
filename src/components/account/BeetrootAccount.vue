@@ -23,9 +23,10 @@
                                 <label class="register__label"
                                     >Email address
                                     <input
-                                        type="email"
+                                        type="text"
                                         class="register__email register__input"
-                                /></label>
+                                    /><span class="register__email_span"></span>
+                                </label>
                             </div>
                             <div class="mb-3">
                                 <label class="register__label"
@@ -67,13 +68,13 @@ export default {
     methods: {
         openAccountForm() {
             this.$refs.formWindow.classList.add("active");
-            if (window.screen.width >= 768) {
+            if (window.innerWidth >= 768) {
                 document.body.classList.add("fixed");
             }
         },
         closeAccountForm() {
             this.$refs.formWindow.classList.remove("active");
-            if (window.screen.width >= 768) {
+            if (window.innerWidth >= 768) {
                 document.body.classList.remove("fixed");
             }
         },
@@ -81,8 +82,25 @@ export default {
             e.preventDefault();
             const emailInput = document.querySelector(".register__email");
             const passwordInput = document.querySelector(".register__password");
+            const re =
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (!emailInput.value && !passwordInput.value) {
+                emailInput.style.borderColor = "red";
+                passwordInput.style.borderColor = "red";
+            }
+            if (
+                !emailInput.value ||
+                !re.test(String(emailInput.value).toLowerCase())
+            ) {
+                emailInput.style.borderColor = "red";
+
+                return;
+            }
+
             emailInput.value = "";
             passwordInput.value = "";
+            emailInput.style.borderColor = "black";
+            passwordInput.style.borderColor = "black";
         },
     },
 };
@@ -95,12 +113,16 @@ export default {
         font-weight: bold;
         text-align: left;
     }
+    &__email {
+        position: relative;
+    }
     &__input {
         display: block;
         border: none;
         border-bottom: 2px solid black;
-        padding: 10px;
-        width: 500px;
+        padding: 10px 0;
+        max-width: 500px;
+        width: 100%;
     }
 }
 .form-check {

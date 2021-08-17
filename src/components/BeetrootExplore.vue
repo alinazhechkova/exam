@@ -83,6 +83,9 @@ export default {
     }
     &__container {
         padding: 80px 0;
+        @media screen and (max-width: 768px) {
+            padding: 50px 0;
+        }
     }
 }
 .shop-all {
@@ -98,6 +101,7 @@ export default {
         height: 100%;
         @media screen and (max-width: 768px) {
             max-height: 60px;
+            font-size: 22px;
         }
     }
     &__img {

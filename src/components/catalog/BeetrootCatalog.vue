@@ -221,6 +221,9 @@ export default {
 <style lang="scss">
 .beetroot-catalog {
     padding: 50px 0;
+    @media screen and (max-width: 768px) {
+        padding: 20px 0;
+    }
 }
 .slick-arrow {
     background-color: transparent;
@@ -340,6 +343,10 @@ export default {
         @media screen and (max-width: 768px) {
             font-size: 18px;
             margin-bottom: 15px;
+        }
+        @media screen and (max-width: 576px) {
+            max-width: 500px;
+            width: 100%;
         }
     }
     &__image-info {

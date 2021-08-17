@@ -1,9 +1,6 @@
 <template>
     <fixed-header :threshold="100">
-        <header
-            class="shop__header header"
-            :class="{ change_color: scrollPosition > 3027 }"
-        >
+        <header class="shop__header header">
             <button
                 class="header__open btn-open"
                 id="openMenu"
@@ -80,6 +77,7 @@ export default {
             btn.classList.toggle("active");
             document.body.classList.toggle("fixed");
         },
+        closeMenu() {},
         updateScroll() {
             window.addEventListener("scroll", () => {
                 this.scrollPosition = window.scrollY;
@@ -146,7 +144,7 @@ export default {
 
 .btn-open {
     position: absolute;
-    top: 30px;
+    top: 15px;
     right: 30px;
     display: none;
     width: 30px;

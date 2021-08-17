@@ -39,6 +39,9 @@ export default {
 .collections {
     &__container {
         padding: 50px 0 115px;
+        @media screen and (max-width: 768px) {
+            padding: 50px 0;
+        }
     }
     &__item {
         position: relative;

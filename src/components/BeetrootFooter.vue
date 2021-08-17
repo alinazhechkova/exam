@@ -5,7 +5,7 @@
             <div class="footer__row row">
                 <router-link
                     to="/"
-                    class="logo col-12 col-md-3 footer__logo logo"
+                    class="logo col-3 col-md-3 footer__logo logo"
                 >
                     <svg aria-hidden="true" viewBox="0 0 512 512">
                         <path
@@ -13,7 +13,7 @@
                         ></path>
                     </svg>
                 </router-link>
-                <div class="col-9 col-md-6">
+                <div class="col-6 col-md-6">
                     <ul class="footer__list list">
                         <li class="list__item">
                             <a href="#" class="list__link">Privacy/Security</a>
@@ -57,6 +57,10 @@ export default {
     transform: rotate(45deg);
     border-right: none;
     border-bottom: none;
+    @media screen and (max-width: 576px) {
+        margin: 0 auto;
+        margin-bottom: 40px;
+    }
 }
 .footer {
     // .footer__container
@@ -72,6 +76,11 @@ export default {
     // .footer__row
 
     &__row {
+        @media screen and (max-width: 576px) {
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
     }
 
     // .footer__logo
@@ -87,6 +96,10 @@ export default {
         }
         @media screen and (max-width: 768px) {
             margin: 0;
+        }
+        @media screen and (max-width: 576px) {
+            margin-bottom: 10px;
+            text-align: center;
         }
     }
 
@@ -106,6 +119,9 @@ export default {
         list-style-type: none;
         padding: 0;
         padding: 0 13px;
+        @media screen and (max-width: 768px) {
+            margin-bottom: 10px;
+        }
     }
 
     &__link {
@@ -113,6 +129,9 @@ export default {
         text-decoration: none;
         font-size: 14px;
         font-weight: bold;
+    }
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
     }
 }
 </style>

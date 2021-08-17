@@ -99,6 +99,9 @@ export default {
     & .slick-arrow {
         background-color: transparent;
     }
+    @media screen and (max-width: 768px) {
+        padding: 50px 0;
+    }
 }
 .slide-count_popular {
     font-size: 25px;

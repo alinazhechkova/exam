@@ -82,14 +82,12 @@ export default {
         openCart() {
             this.showModal = !this.showModal;
             this.$refs.cart.classList.toggle("active");
-            if (window.screen.width >= 768) {
-                document.body.classList.add("fixed");
-            }
+            document.body.classList.add("fixed");
         },
         closeCart() {
             this.showModal = !this.showModal;
             this.$refs.cart.classList.remove("active");
-            if (window.screen.width >= 768) {
+            if (window.innerWidth >= 768) {
                 document.body.classList.remove("fixed");
             }
         },
@@ -156,6 +154,9 @@ export default {
     &__footer {
         display: flex;
         justify-content: space-between;
+    }
+    @media screen and (max-width: 768px) {
+        padding: 50px;
     }
 }
 .cart {
